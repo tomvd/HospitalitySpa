@@ -10,12 +10,22 @@ namespace HospitalitySpa
     {
         static HarmonyPatches()
         {
-            HospitalitySpaMod.harmonyInstance.Patch(AccessTools.Method(typeof(JoyGiver_UseHotTub), "TryGivePlayJob"),
-            prefix: new HarmonyMethod(typeof(HarmonyPatches), nameof(TryGivePlayJob_Prefix)));
-            HospitalitySpaMod.harmonyInstance.Patch(AccessTools.Method(typeof(JoyGiver_GoSwimming), "TryGivePlayJob"), 
-                prefix: new HarmonyMethod(typeof(HarmonyPatches), nameof(TryGivePlayJob_Prefix)));
-            HospitalitySpaMod.harmonyInstance.Patch(AccessTools.Method(typeof(JoyGiver_UseSauna), "TryGivePlayJob"), 
-                prefix: new HarmonyMethod(typeof(HarmonyPatches), nameof(TryGivePlayJob_Prefix)));
+            var method = GenTypes.GetTypeInAnyAssembly("JoyGiver_UseHotTub", "DubsBadHygiene");
+            if (method != null)
+                HospitalitySpaMod.harmonyInstance.Patch(
+                    AccessTools.Method(typeof(JoyGiver_UseHotTub), "TryGivePlayJob"),
+                    prefix: new HarmonyMethod(typeof(HarmonyPatches), nameof(TryGivePlayJob_Prefix)));
+
+            method = GenTypes.GetTypeInAnyAssembly("JoyGiver_GoSwimming", "DubsBadHygiene");
+            if (method != null)
+                HospitalitySpaMod.harmonyInstance.Patch(
+                    AccessTools.Method(typeof(JoyGiver_GoSwimming), "TryGivePlayJob"),
+                    prefix: new HarmonyMethod(typeof(HarmonyPatches), nameof(TryGivePlayJob_Prefix)));
+
+            method = GenTypes.GetTypeInAnyAssembly("JoyGiver_UseSauna", "DubsBadHygiene");
+            if (method != null)
+                HospitalitySpaMod.harmonyInstance.Patch(AccessTools.Method(typeof(JoyGiver_UseSauna), "TryGivePlayJob"),
+                    prefix: new HarmonyMethod(typeof(HarmonyPatches), nameof(TryGivePlayJob_Prefix)));
         }
 
 
@@ -29,5 +39,5 @@ namespace HospitalitySpa
 
             return true;
         }
-   }
+    }
 }
