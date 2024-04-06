@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using Hospitality;
 using RimWorld;
@@ -5,9 +6,20 @@ using Verse;
 
 namespace HospitalitySpa
 {
-    public class VendingMachineJobHelper
+    public static class VendingMachineJobHelper
 	{
+		public static List<Building> GetActiveVendingMachines(Map map)
+		{
+			return map.listerBuildings.allBuildingsColonist
+				.Where(building => building.IsVendingMachine()).ToList();
+		}
 
+		public static bool IsVendingMachine(this Building building)
+		{
+			if (building.comps == null) return false;
+			return building.comps.Any(comp => comp is CompVendingMachine machine && machine.IsActive() && machine.IsPowered());
+		}
+		
 		public static bool CheckIfShouldPay(Pawn pawn, Thing slotMachine)
 		{
 			// only guests pay
@@ -27,7 +39,7 @@ namespace HospitalitySpa
 		        if (CheckIfShouldPay(pawn, vendingMachine))
 		        {
 			        // caravan pawns spent only 50% of their budget on hyhdrotherapy/ 50% on food/bed
-			        if (CountSilver(pawn) < compVendingMachine.CurrentPrice * 2) 
+			        if (CountSilver(pawn) < compVendingMachine.GetSingleItemPrice(null) * 2) 
 			        {
 				        Log.Message(pawn.NameShortColored + " wanted hyhdrotherapy, but could not afford it");
 				        return false;
@@ -44,9 +56,9 @@ namespace HospitalitySpa
 			if (vendingMachine != null && CheckIfShouldPay(pawn, vendingMachineParent))
 			{
 				var cash = pawn.inventory.innerContainer?.FirstOrDefault(t => t?.def == ThingDefOf.Silver);
-				if (cash != null && cash.stackCount >= vendingMachine.CurrentPrice){
+				if (cash != null && cash.stackCount >= vendingMachine.GetSingleItemPrice(null)){
 					//comp.TotalRevenue += vendingMachine.CurrentPrice;
-					vendingMachine.ReceivePayment(pawn.inventory.innerContainer, cash);
+					vendingMachine.ReceivePayment(pawn.inventory.innerContainer, cash, null, 1);
 				}
 				else
 				{
