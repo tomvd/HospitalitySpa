@@ -161,8 +161,7 @@ namespace HospitalitySpa
             {
                 return "HospitalitySpa_VendingMachineContains".Translate() + ((float)Content).ToStringMoney("F0") +
                        "\n"
-                       + "HospitalitySpa_VendingMachineTotal".Translate() + ((float)totalSold).ToStringMoney("F0")
-                       +"\n";
+                       + "HospitalitySpa_VendingMachineTotal".Translate() + ((float)totalSold).ToStringMoney("F0");
             }
             else
             {
