@@ -14,6 +14,11 @@
 			<displayName>Hospitality</displayName>
 			<steamWorkshopUrl>steam://url/CommunityFilePage/2553700067</steamWorkshopUrl>
 		</li>
+		<li>
+			<packageId>Dubwise.DubsBadHygiene</packageId>
+			<displayName>Dubs Bad Hygiene</displayName>
+			<steamWorkshopUrl>steam://url/CommunityFilePage/836308268</steamWorkshopUrl>
+		</li>	
 	</modDependencies>
 	<loadAfter>
 		<li>Orion.Hospitality</li>
