@@ -5,6 +5,7 @@ using Verse;
 
 namespace HospitalitySpa
 {
+	[DefOf]
 	public class MyDefs
 	{
 		static MyDefs()
