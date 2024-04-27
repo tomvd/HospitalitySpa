@@ -12,8 +12,8 @@
                         <xpath>Defs/ThingDef[defName="DBHSwimmingPool"]</xpath>
                         <value>
                             <comps>
-                                <li Class="HospitalitySpa.CompProperties_VendingMachine">
-                                    <compClass>HospitalitySpa.CompVendingMachine</compClass>
+                                <li Class="Hospitality.CompProperties_VendingMachine">
+                                    <compClass>Hospitality.CompVendingMachine</compClass>
                                     <defaultPrice>10</defaultPrice>
                                     <noToggle>true</noToggle>
                                 </li>
@@ -23,8 +23,8 @@
                     <match Class="PatchOperationAdd">
                         <xpath>Defs/ThingDef[defName="DBHSwimmingPool"]/comps</xpath>
                         <value>
-                            <li Class="HospitalitySpa.CompProperties_VendingMachine">
-                                <compClass>HospitalitySpa.CompVendingMachine</compClass>
+                            <li Class="Hospitality.CompProperties_VendingMachine">
+                                <compClass>Hospitality.CompVendingMachine</compClass>
                                 <defaultPrice>10</defaultPrice>
                                 <noToggle>true</noToggle>
                             </li>

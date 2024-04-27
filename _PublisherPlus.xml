@@ -3,6 +3,6 @@
   <Excluded>
     <exclude>.git</exclude>
     <exclude>Source</exclude>
-    <exclude>Textures</exclude>
+    <exclude>Textures\UI\Commands\PSDs</exclude>
   </Excluded>
 </Configuration>
