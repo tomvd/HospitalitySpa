@@ -27,7 +27,7 @@ namespace HospitalitySpa
             {
                 if (StoreUtility.TryFindBestBetterStorageFor(silver, pawn, pawn.Map, StoreUtility.CurrentStoragePriorityOf(silver), pawn.Faction, out _, out _))
                 {
-                    var haulJob = HaulAIUtility.HaulToStorageJob(pawn, silver);
+                    var haulJob = HaulAIUtility.HaulToStorageJob(pawn, silver, false);
                     if (haulJob != null)
                         return JobMaker.MakeJob(MyDefs.HospitalitySpa_EmptyVendingMachine, t, silver);
                 }
