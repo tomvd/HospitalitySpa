@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <RootNamespace>HospitalitySpa</RootNamespace>
+        <AssemblyName>HospitalitySpa</AssemblyName>
+        <TargetFramework>net48</TargetFramework>
+        <LangVersion>latest</LangVersion>
+        <PlatformTarget>x64</PlatformTarget>
+        <OutputPath>..\..\1.6\Assemblies\</OutputPath>
+        <Optimize>true</Optimize>
+        <DebugType>none</DebugType>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <!-- Keep the existing hand-written Properties\AssemblyInfo.cs; don't let the SDK generate a duplicate. -->
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <!-- Path to Dubs Bad Hygiene's DLL, needed only to COMPILE. Adjust to match your install
+             (this default is the Steam Workshop "Full" edition, id 836308268). Not installed = Spa can't build. -->
+        <DubsBadHygieneDll Condition="'$(DubsBadHygieneDll)' == ''">E:\SteamLibrary\steamapps\workshop\content\294100\836308268\Common\Assemblies\DubsBadHygiene.dll</DubsBadHygieneDll>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Krafs.Publicizer">
+            <Version>1.0.3</Version>
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Krafs.Rimworld.Ref">
+            <Version>1.6.*</Version>
+            <ExcludeAssets>runtime</ExcludeAssets>
+            <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <!-- Harmony is provided at runtime by the Harmony/RimWorld load; compile-only here. -->
+        <PackageReference Include="Lib.Harmony" Version="*" ExcludeAssets="runtime" />
+    </ItemGroup>
+    <ItemGroup>
+        <Publicize Include="Assembly-CSharp" />
+    </ItemGroup>
+
+    <!--
+      Dubs Bad Hygiene is a hard COMPILE dependency (HotTubJob/SaunaJob/SwimmingJob/HarmonyPatches
+      reference its types). It is NOT redistributed with this mod (Private=false) and is loaded from
+      the Workshop at runtime. To build, install Dubs Bad Hygiene and point this HintPath at its DLL.
+    -->
+    <ItemGroup>
+      <Reference Include="DubsBadHygiene">
+        <HintPath>$(DubsBadHygieneDll)</HintPath>
+        <Private>false</Private>
+      </Reference>
+    </ItemGroup>
+
+    <!-- Surface the mod's content XML (Defs, Patches, Languages, About...) in the IDE so it's reachable alongside the source -->
+    <ItemGroup>
+        <None Include="..\..\**\*.xml" Exclude="..\..\Source\**\*.xml" Link="%(RecursiveDir)%(Filename)%(Extension)" />
+    </ItemGroup>
+</Project>
