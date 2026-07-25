@@ -16,9 +16,9 @@
     </PropertyGroup>
 
     <PropertyGroup>
-        <!-- Path to Dubs Bad Hygiene's DLL, needed only to COMPILE. Adjust to match your install
-             (this default is the Steam Workshop "Full" edition, id 836308268). Not installed = Spa can't build. -->
-        <DubsBadHygieneDll Condition="'$(DubsBadHygieneDll)' == ''">E:\SteamLibrary\steamapps\workshop\content\294100\836308268\Common\Assemblies\DubsBadHygiene.dll</DubsBadHygieneDll>
+        <!-- Path to Dubs Bad Hygiene's assembly (the file is named BadHygiene.dll), needed only to COMPILE.
+             Default = Steam Workshop "Full" edition (id 836308268), RimWorld 1.6. Override if your install differs. -->
+        <BadHygieneDll Condition="'$(BadHygieneDll)' == ''">E:\SteamLibrary\steamapps\workshop\content\294100\836308268\1.6\Assemblies\BadHygiene.dll</BadHygieneDll>
     </PropertyGroup>
 
     <ItemGroup>
@@ -45,8 +45,8 @@
       the Workshop at runtime. To build, install Dubs Bad Hygiene and point this HintPath at its DLL.
     -->
     <ItemGroup>
-      <Reference Include="DubsBadHygiene">
-        <HintPath>$(DubsBadHygieneDll)</HintPath>
+      <Reference Include="BadHygiene">
+        <HintPath>$(BadHygieneDll)</HintPath>
         <Private>false</Private>
       </Reference>
     </ItemGroup>
