@@ -4,13 +4,14 @@
     <PropertyGroup>
         <RootNamespace>HospitalitySpa</RootNamespace>
         <AssemblyName>HospitalitySpa</AssemblyName>
-        <TargetFramework>net48</TargetFramework>
+        <TargetFramework>net10.0</TargetFramework>
         <LangVersion>latest</LangVersion>
         <PlatformTarget>x64</PlatformTarget>
-        <OutputPath>..\..\1.6\Assemblies\</OutputPath>
+        <OutputPath>..\..\1.7\Assemblies\</OutputPath>
         <Optimize>true</Optimize>
         <DebugType>none</DebugType>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <GenerateDependencyFile>false</GenerateDependencyFile>
         <!-- Keep the existing hand-written Properties\AssemblyInfo.cs; don't let the SDK generate a duplicate. -->
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     </PropertyGroup>
@@ -28,7 +29,7 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
         <PackageReference Include="Krafs.Rimworld.Ref">
-            <Version>1.6.*</Version>
+            <Version>1.7.4977-alpha.1</Version>
             <ExcludeAssets>runtime</ExcludeAssets>
             <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>

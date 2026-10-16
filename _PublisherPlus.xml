@@ -2,6 +2,10 @@
 <Configuration>
   <Excluded>
     <exclude>.git</exclude>
+    <exclude>HospitalitySpa.slnx</exclude>
+    <exclude>.vscode</exclude>
+    <exclude>.idea</exclude>
+    <exclude>.claude</exclude>
     <exclude>Source</exclude>
     <exclude>Textures\UI\Commands\PSDs</exclude>
   </Excluded>
